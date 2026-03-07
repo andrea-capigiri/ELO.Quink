@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,12 +10,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
     selector: 'app-bookmarks-top',
     imports: [
-        CommonModule,
-        MatRippleModule,
-        MatTooltipModule,
-        MatIconModule,
-        MatButtonModule,
-    ],
+    MatRippleModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatButtonModule
+],
     templateUrl: './bookmarks-top.component.html',
     styleUrl: './bookmarks-top.component.scss'
 })

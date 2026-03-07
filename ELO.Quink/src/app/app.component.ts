@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,13 +10,12 @@ import { ApplicationService } from './_shared/application.service';
 @Component({
     selector: 'app-root',
     imports: [
-        CommonModule,
-        BookmarksComponent,
-        BookmarksTopComponent,
-        FooterComponent,
-        MatIconModule,
-        MatButtonModule,
-    ],
+    BookmarksComponent,
+    BookmarksTopComponent,
+    FooterComponent,
+    MatIconModule,
+    MatButtonModule
+],
     templateUrl: 'app.component.html',
     styleUrls: ['./app.component.scss'],
     animations: []
