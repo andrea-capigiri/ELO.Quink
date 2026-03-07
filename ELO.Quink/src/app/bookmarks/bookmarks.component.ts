@@ -8,7 +8,6 @@ import { MatRippleModule } from '@angular/material/core';
 
 @Component({
     selector: 'app-bookmarks',
-    standalone: true,
     imports: [
         CommonModule,
         MatRippleModule,

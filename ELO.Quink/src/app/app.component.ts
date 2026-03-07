@@ -9,7 +9,6 @@ import { ApplicationService } from './_shared/application.service';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     imports: [
         CommonModule,
         BookmarksComponent,
