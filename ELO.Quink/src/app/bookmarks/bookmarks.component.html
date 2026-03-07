@@ -12,7 +12,7 @@
     @for ($item of list; track $item) {
       @if ($item.type=='folder') {
         <div class="md-table">
-          <div matRipple class="md-row md-folder" (click)="this.$item.expanded=!$item.expanded">
+          <div matRipple class="md-row md-folder" (click)="$item.expanded=!$item.expanded">
             <div class="md-item-expand">
               @if ($item.expanded==false) {
                 <button mat-icon-button>
