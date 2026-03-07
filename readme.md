@@ -1,3 +1,2 @@
-# QUINK
 
-Your quick bookmark new tab
+# ELO.Quink

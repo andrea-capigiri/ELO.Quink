@@ -1,8 +1,0 @@
-<div>
-    @for ($item of this._service.topBookmarks; track $item.id) {
-        <div matRipple [matTooltip]="$item.title ?? ''" class="md button" (click)="this.navigateTo($item.url)">
-            <img [src]="$item.iconSrc" [alt]="$item.title">
-            <label>{{ $item.title }}</label>
-        </div>
-    }
-</div>

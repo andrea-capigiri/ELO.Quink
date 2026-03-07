@@ -1,0 +1,17 @@
+@if (!this._service.topBookmarks || this._service.topBookmarks.length === 0) {
+    <div class="empty-state">
+        <mat-icon>star_border</mat-icon>
+        <p>No quick links yet</p>
+        <span>Save pages to "Other bookmarks" to pin them here as quick links</span>
+    </div>
+}
+@else {
+    <div>
+        @for ($item of this._service.topBookmarks; track $item.id) {
+            <div matRipple [matTooltip]="$item.title ?? ''" class="md button" (click)="this.navigateTo($item.url)">
+                <img [src]="$item.iconSrc" [alt]="$item.title">
+                <label>{{ $item.title }}</label>
+            </div>
+        }
+    </div>
+}

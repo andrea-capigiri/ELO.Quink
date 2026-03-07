@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/footer/footer.component.scss"],
+  "sourcesContent": [":host {\r\n    .footer-container {\r\n        text-align: center;\r\n        padding: 12px 8px;\r\n\r\n        a {\r\n            font-size: 0.75rem;\r\n            color: #888;\r\n            text-decoration: none;\r\n            opacity: 0.6;\r\n            transition: opacity 0.2s;\r\n\r\n            &:hover {\r\n                opacity: 1;\r\n            }\r\n        }\r\n    }\r\n\r\n    .fixed-left {\r\n        position: fixed;\r\n        left: 0;\r\n        bottom: 0;\r\n    }\r\n\r\n    .fixed-right {\r\n        position: fixed;\r\n        right: 0;\r\n        bottom: 0;\r\n    }\r\n\r\n    button {\r\n        zoom: .8;\r\n    }\r\n}"],
+  "mappings": ";AACI,MAAA,CAAA;AACI,cAAA;AACA,WAAA,KAAA;;AAEA,MAAA,CAJJ,iBAII;AACI,aAAA;AACA,SAAA;AACA,mBAAA;AACA,WAAA;AACA,cAAA,QAAA;;AAEA,MAAA,CAXR,iBAWQ,CAAA;AACI,WAAA;;AAKZ,MAAA,CAAA;AACI,YAAA;AACA,QAAA;AACA,UAAA;;AAGJ,MAAA,CAAA;AACI,YAAA;AACA,SAAA;AACA,UAAA;;AAGJ,MAAA;AACI,QAAA;;",
+  "names": []
+}
