@@ -37,6 +37,11 @@ export class ApplicationService {
                     { id: '22', parentId: '2', title: 'Netflix', url: 'https://www.netflix.com' },
                     { id: '23', parentId: '2', title: 'Spotify', url: 'https://www.spotify.com' },
                     { id: '24', parentId: '2', title: 'Stack Overflow', url: 'https://stackoverflow.com' },
+                    { id: '30', parentId: '2', title: 'Google', url: 'https://www.google.com' },
+                    { id: '31', parentId: '2', title: 'Twitter', url: 'https://www.twitter.com' },
+                    { id: '32', parentId: '2', title: 'Netflix', url: 'https://www.netflix.com' },
+                    { id: '33', parentId: '2', title: 'Spotify', url: 'https://www.spotify.com' },
+                    { id: '34', parentId: '2', title: 'Stack Overflow', url: 'https://stackoverflow.com' },
                 ]
             }
         ]

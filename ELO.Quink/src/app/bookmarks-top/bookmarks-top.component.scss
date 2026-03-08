@@ -28,33 +28,71 @@
         }
     }
 
-    &>div {
-        gap: 20px;
+    .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 100px));
+        grid-template-columns: repeat(8, 1fr);
+        gap: 12px;
+
+        @media (max-width: 900px) {
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(6, 1fr);
+        }
+
+        @media (max-width: 600px) {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        @media (max-width: 480px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
 
         .button {
-            $size: 100px;
-
             cursor: pointer !important;
-            display: block;
-            width: $size;
-            height: $size;
-
-            padding: 0.9em;
-            border-radius: 1em;
-
-            gap: 1em;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            aspect-ratio: 1;
 
-            img {}
+            padding: 0.5em;
+            border-radius: 1em;
+            gap: 0.5em;
+            overflow: hidden;
+
+            img {
+                flex-shrink: 0;
+            }
 
             label {
                 text-align: center;
                 cursor: pointer !important;
+                font-size: 0.75rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 100%;
+
+                @media (max-width: 480px) {
+                    display: none;
+                }
+            }
+        }
+
+        .more-button {
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            opacity: 0.7;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            mat-icon {
+                font-size: 28px;
+                width: 28px;
+                height: 28px;
             }
         }
     }

@@ -6,11 +6,23 @@
     </div>
 }
 @else {
-    <div>
-        @for ($item of this._service.topBookmarks; track $item.id) {
+    <div class="grid">
+        @for ($item of this.visibleBookmarks; track $item.id) {
             <div matRipple [matTooltip]="$item.title ?? ''" class="md button" (click)="this.navigateTo($item.url)">
                 <img [src]="$item.iconSrc" [alt]="$item.title">
                 <label>{{ $item.title }}</label>
+            </div>
+        }
+        @if (this.hasOverflow) {
+            <div matRipple class="md button more-button" (click)="this.showAll = true">
+                <mat-icon>more_horiz</mat-icon>
+                <label>Show more</label>
+            </div>
+        }
+        @if (this.showAll) {
+            <div matRipple class="md button more-button" (click)="this.showAll = false">
+                <mat-icon>expand_less</mat-icon>
+                <label>Show less</label>
             </div>
         }
     </div>
