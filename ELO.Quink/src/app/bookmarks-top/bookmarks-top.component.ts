@@ -1,6 +1,6 @@
 
 import { Component, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { ButtonModule } from 'primeng/button';
 import { MatIconModule } from '@angular/material/icon';
 import { environment } from '../../environments/environment';
 import { ApplicationService } from '../_shared/application.service';
@@ -11,11 +11,11 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 @Component({
     selector: 'app-bookmarks-top',
     imports: [
-    MatRippleModule,
-    MatTooltipModule,
-    MatIconModule,
-    MatButtonModule
-],
+        MatRippleModule,
+        MatTooltipModule,
+        MatIconModule,
+        ButtonModule
+    ],
     templateUrl: './bookmarks-top.component.html',
     styleUrl: './bookmarks-top.component.scss'
 })
@@ -23,6 +23,7 @@ export class BookmarksTopComponent {
 
     showAll = false;
     columns = 8;
+    emptyDismissed = localStorage.getItem('bookmarks-top-empty-dismissed') === 'true';
 
     private _breakpointObserver = inject(BreakpointObserver);
 
@@ -56,6 +57,11 @@ export class BookmarksTopComponent {
 
     get hasOverflow(): boolean {
         return !this.showAll && (this._service.topBookmarks?.length ?? 0) > this.maxItems;
+    }
+
+    public dismissEmpty() {
+        this.emptyDismissed = true;
+        localStorage.setItem('bookmarks-top-empty-dismissed', 'true');
     }
 
     public editBookmarks(id: number | null = null) {

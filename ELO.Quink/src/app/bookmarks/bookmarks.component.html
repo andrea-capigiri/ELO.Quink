@@ -1,9 +1,12 @@
 @if (!this._service.bookmarks || this._service.bookmarks.length === 0) {
-  <div class="empty-state">
-    <mat-icon>bookmark_border</mat-icon>
-    <p>Your Bookmarks bar is empty</p>
-    <span>Save your favorite pages to the Bookmarks bar to see them here</span>
-  </div>
+  @if (!this.emptyDismissed) {
+    <div class="empty-state">
+      <mat-icon>bookmark_border</mat-icon>
+      <p>Your Bookmarks bar is empty</p>
+      <span>Save your favorite pages to the Bookmarks bar to see them here</span>
+      <p-button label="Ignore" [text]="true" severity="secondary" class="dismiss-button" (onClick)="this.dismissEmpty()" />
+    </div>
+  }
 }
 @else {
 <div class="md bookmark-bar">
@@ -39,7 +42,11 @@
         <div matRipple class="md-table" (click)="this.navigateTo($item.url)">
           <div class="md-row">
             <div class="md-item-icon">
-              <img [src]="$item.iconSrc" [alt]="$item.title">
+              @if ($item.iconSrc) {
+                <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = null">
+              } @else {
+                <mat-icon class="fallback-icon">star_border</mat-icon>
+              }
             </div>
             <div class="md-item-title">
               {{$item.title}}

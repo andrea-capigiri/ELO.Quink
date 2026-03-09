@@ -68,13 +68,15 @@
 
             padding: 0.5em;
             border-radius: 1em;
-            gap: 0.5em;
+            gap: 8px;
             overflow: hidden;
 
             img {
                 flex-shrink: 0;
-                width: 50%;
-                height: 50%;
+                //width: 50%;
+                //height: 50%;
+                width: 32px;
+                height: 32px;
             }
 
             .fallback-icon {
@@ -92,7 +94,10 @@
                 font-size: 0.75rem;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                white-space: nowrap;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                -webkit-box-orient: vertical;
                 width: 100%;
 
                 @media (max-width: 480px) {
@@ -103,6 +108,7 @@
 
         .more-button {
             border: 2px dashed rgba(255, 255, 255, 0.3);
+            background: none !important;
             opacity: 0.7;
 
             &:hover {

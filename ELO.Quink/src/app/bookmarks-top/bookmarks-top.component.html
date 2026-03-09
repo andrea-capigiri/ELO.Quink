@@ -1,15 +1,22 @@
 @if (!this._service.topBookmarks || this._service.topBookmarks.length === 0) {
-    <div class="empty-state">
-        <mat-icon>star_border</mat-icon>
-        <p>No quick links yet</p>
-        <span>Save pages to "Other bookmarks" to pin them here as quick links</span>
-    </div>
+    @if (!this.emptyDismissed) {
+        <div class="empty-state">
+            <mat-icon>star_border</mat-icon>
+            <p>No quick links yet</p>
+            <span>Save pages to "Other bookmarks" to pin them here as quick links</span>
+            <p-button label="Ignore" [text]="true" severity="secondary" class="dismiss-button" (onClick)="this.dismissEmpty()" />
+        </div>
+    }
 }
 @else {
     <div class="grid">
         @for ($item of this.visibleBookmarks; track $item.id) {
             <div matRipple [matTooltip]="$item.title ?? ''" class="md button" (click)="this.navigateTo($item.url)">
-                <img [src]="$item.iconSrc" [alt]="$item.title">
+                @if ($item.iconSrc) {
+                    <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = null">
+                } @else {
+                    <mat-icon class="fallback-icon">star_border</mat-icon>
+                }
                 <label>{{ $item.title }}</label>
             </div>
         }
