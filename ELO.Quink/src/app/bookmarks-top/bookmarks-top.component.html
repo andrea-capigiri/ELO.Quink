@@ -13,7 +13,7 @@
         @for ($item of this.visibleBookmarks; track $item.id) {
             <div matRipple [matTooltip]="$item.title ?? ''" class="md button" (click)="this.navigateTo($item.url)">
                 @if ($item.iconSrc) {
-                    <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = null">
+                    <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = $item.iconSrcFallback; $item.iconSrcFallback = null">
                 } @else {
                     <mat-icon class="fallback-icon">star_border</mat-icon>
                 }

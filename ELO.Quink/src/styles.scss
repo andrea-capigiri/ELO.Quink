@@ -3,6 +3,9 @@
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
 
+// Fonts (local)
+@import 'material-icons/iconfont/filled.css';
+
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
@@ -41,7 +44,8 @@ $elo-quink-theme: mat.m2-define-light-theme((color: (primary: $elo-quink-primary
 
 body {
     margin: 0;
-    //font-family: Roboto, sans-serif;
+    font-family: 'Segoe UI', 'Segoe UI Semibold', sans-serif;
+    font-weight: 600;
 }
 
 html,

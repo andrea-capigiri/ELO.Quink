@@ -13,7 +13,7 @@ export class ApplicationService {
         this._getBookmarks()
             .then(res => {
                 let rootNode = res[0]?.children;
-                this.topBookmarks = (!!rootNode) ? this._mapData(rootNode[1])?.children?.filter(t => t.type == 'bookmark') : [];
+                this.topBookmarks = (!!rootNode) ? this._mapData(rootNode[1], true)?.children?.filter(t => t.type == 'bookmark') : [];
                 this.bookmarks = (!!rootNode) ? this._mapData(rootNode[0])?.children : [];
             });
     }
@@ -30,16 +30,28 @@ export class ApplicationService {
         return url.toString();
     }
 
-    private _mapData(item: any): BookmarkItem {
+    private _getGoogleFaviconURL(u: string): string | null {
+        try {
+            const domain = new URL(u).hostname;
+            return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+        } catch {
+            return null;
+        }
+    }
+
+    private _mapData(item: any, isTop = false): BookmarkItem {
+        const chromeFavicon = !environment.production ? item.favicon : this._getFaviconURL(item.url);
+        const googleFavicon = item.url ? this._getGoogleFaviconURL(item.url) : null;
         return <BookmarkItem>{
             type: (!!item.children && item.children.length > 0 && !item.url) ? 'folder' : 'bookmark',
             expanded: false,
             id: item.id,
             parentId: item.parentId,
             title: item.title,
-            iconSrc: !environment.production ? item.favicon : this._getFaviconURL(item.url),
+            iconSrc: isTop && googleFavicon ? googleFavicon : chromeFavicon,
+            iconSrcFallback: isTop && googleFavicon ? chromeFavicon : null,
             url: item.url,
-            children: (!!item.children && item.children.length > 0) ? Object.values(item.children).map(c => this._mapData(c)) : []
+            children: (!!item.children && item.children.length > 0) ? Object.values(item.children).map(c => this._mapData(c, isTop)) : []
         };
     }
 }

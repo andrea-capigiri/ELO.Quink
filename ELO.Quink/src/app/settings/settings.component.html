@@ -1,0 +1,25 @@
+@if (open) {
+    <div class="overlay" (click)="close()"></div>
+    <div class="panel">
+        <div class="panel-header">
+            <mat-icon>settings</mat-icon>
+            <span>Impostazioni</span>
+            <button mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
+        </div>
+        <div class="panel-body">
+            <p class="section-title">Layout</p>
+            <div class="row">
+                <label>Quick links (in alto)</label>
+                <mat-slide-toggle [checked]="settings.showTop()" (change)="settings.setShowTop($event.checked)"></mat-slide-toggle>
+            </div>
+            <div class="row">
+                <label>Elenco segnalibri</label>
+                <mat-slide-toggle [checked]="settings.showList()" (change)="settings.setShowList($event.checked)"></mat-slide-toggle>
+            </div>
+        </div>
+    </div>
+}
+
+<button mat-icon-button (click)="toggle()" class="gear-btn">
+    <mat-icon>settings</mat-icon>
+</button>

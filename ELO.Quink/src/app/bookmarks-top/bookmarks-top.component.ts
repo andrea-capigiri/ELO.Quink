@@ -10,6 +10,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
     selector: 'app-bookmarks-top',
+    standalone: true,
     imports: [
         MatRippleModule,
         MatTooltipModule,

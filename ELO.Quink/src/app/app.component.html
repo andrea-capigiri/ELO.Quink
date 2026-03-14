@@ -1,7 +1,9 @@
 <main>
-    
-    <app-bookmarks-top></app-bookmarks-top>
-    <app-bookmarks></app-bookmarks>
+    @if (settings.showTop()) {
+        <app-bookmarks-top></app-bookmarks-top>
+    }
+    @if (settings.showList()) {
+        <app-bookmarks></app-bookmarks>
+    }
     <app-footer></app-footer>
-    
 </main>
