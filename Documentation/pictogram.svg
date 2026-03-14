@@ -1,0 +1,6 @@
+<svg viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#f8fafc" stroke-width="6" stroke-linecap="round">
+    <path d="M3 3h20 M9 12h20 M5 21h18" opacity="0.4" />
+    <path d="M11 3h12 M17 12h12 M13 21h10" />
+  </g>
+</svg>

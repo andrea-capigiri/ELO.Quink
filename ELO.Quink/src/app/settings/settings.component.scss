@@ -1,0 +1,70 @@
+@use '../../styles' as *;
+
+:host {
+    @extend .container;
+    @extend .stack-y;
+    gap: 24px;
+    padding: 48px 24px 0 24px;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.page-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+}
+
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gh-border-muted, rgba(255, 255, 255, 0.08));
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.toggle-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gh-fg-default);
+}
+
+.about-section {
+    h3 {
+        margin: 0 0 4px;
+    }
+
+    p {
+        margin: 0 0 8px;
+        color: var(--gh-fg-muted);
+        font-size: 13px;
+    }
+}
+
+.center-center {
+    display: flex;
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.my-3 {
+    margin-top: 12px;
+    margin-bottom: 12px;
+}

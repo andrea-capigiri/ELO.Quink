@@ -1,0 +1,159 @@
+// Imports
+@use './assets/scss/scrollbar.scss';
+@use './assets/scss/utilities.scss';
+@use './assets/scss/ngprime-override.scss';
+// Fonts (local)
+@use 'material-icons/iconfont/filled.css';
+@use 'primeicons/primeicons.css';
+
+/* GitHub Design System - CSS Custom Properties */
+
+:root {
+    --md-card-bg: #ffffff;
+    --md-shadow: 0 12px 18px -2px rgba(0, 0, 0, 0.06);
+    --item-hover-bg: rgba(0, 0, 0, 0.05);
+    --folder-exploded-bg: rgba(0, 0, 0, 0.03);
+    --md-row-color: #484848;
+    --gh-canvas-default: #f3f3f3;
+    --gh-canvas-subtle: #f6f8fa;
+    --gh-canvas-inset: #f6f8fa;
+    --gh-border-default: #d0d7de;
+    --gh-border-muted: #d8dee4;
+    --gh-fg-default: #1f2328;
+    --gh-fg-muted: #656d76;
+    --gh-fg-subtle: #6e7781;
+    --gh-accent-fg: #0969da;
+    --gh-accent-emphasis: #0969da;
+    --gh-accent-subtle: rgba(84, 174, 255, 0.15);
+    --gh-success-fg: #1a7f37;
+    --gh-success-emphasis: #1f883d;
+    --gh-danger-fg: #cf222e;
+    --gh-danger-bg: #ffebe9;
+    --gh-danger-border: #ff8182;
+    --gh-btn-text: #24292f;
+    --gh-btn-bg: #f6f8fa;
+    --gh-btn-border: rgba(31, 35, 40, 0.15);
+    --gh-btn-hover-bg: #f3f4f6;
+    --gh-btn-primary-text: #ffffff;
+    --gh-btn-primary-bg: #1f883d;
+    --gh-btn-primary-hover-bg: #1c7c38;
+    --gh-shadow-small: 0 1px 0 rgba(31, 35, 40, 0.04);
+    --gh-shadow-medium: 0 3px 6px rgba(140, 149, 159, 0.15);
+    --gh-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    --gh-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --gh-radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --md-card-bg: #35363a;
+        --md-shadow: 0 4px 10px -2px rgba(255, 255, 255, 0.02);
+        --item-hover-bg: rgba(255, 255, 255, 0.08);
+        --folder-exploded-bg: rgba(0, 0, 0, 0.2);
+        --md-row-color: #D2D2D2;
+        --gh-canvas-default: #282828;
+        --gh-canvas-subtle: #161b22;
+        --gh-canvas-inset: #010409;
+        --gh-border-default: #30363d;
+        --gh-border-muted: #21262d;
+        --gh-fg-default: #e6edf3;
+        --gh-fg-muted: #8b949e;
+        --gh-fg-subtle: #6e7681;
+        --gh-accent-fg: #58a6ff;
+        --gh-accent-emphasis: #1f6feb;
+        --gh-accent-subtle: rgba(56, 139, 253, 0.1);
+        --gh-success-fg: #3fb950;
+        --gh-success-emphasis: #238636;
+        --gh-danger-fg: #f85149;
+        --gh-danger-bg: rgba(218, 54, 51, 0.15);
+        --gh-danger-border: #da3633;
+        --gh-btn-text: #c9d1d9;
+        --gh-btn-bg: #21262d;
+        --gh-btn-border: rgba(240, 246, 252, 0.1);
+        --gh-btn-hover-bg: #30363d;
+        --gh-btn-primary-text: #ffffff;
+        --gh-btn-primary-bg: #238636;
+        --gh-btn-primary-hover-bg: #2ea043;
+        --gh-shadow-small: 0 0 transparent;
+        --gh-shadow-medium: 0 3px 6px #010409;
+    }
+}
+
+/* ========== BASE ========== */
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    //font-family: 'Segoe UI', 'Segoe UI Semibold', sans-serif;
+    //font-weight: 600;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: var(--gh-font);
+    color: var(--gh-fg-default);
+    background-color: var(--gh-canvas-default);
+}
+
+html,
+body,
+app-root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+router-outlet+* {
+    flex: 1 !important;
+}
+
+label {
+    display: block;
+    max-width: 100%;
+    font-size: 0.8rem;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.opacity {
+        opacity: 0.5;
+        font-weight: 400;
+    }
+}
+
+.md {
+    background-color: var(--md-card-bg);
+    box-shadow: var(--md-shadow);
+}
+
+a,
+.md .md-row {
+    color: var(--md-row-color);
+}
+
+.md .md-folder-exploded {
+    background-color: var(--folder-exploded-bg);
+}
+
+p-card,
+.md.button,
+.bookmark-bar {
+    background-color: var(--md-card-bg) !important;
+}
+
+/* ========== TOOL CONTAINER ========== */
+
+.container-p tool-container {
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media (max-width: 480px) {
+    .container-p tool-container {
+        padding: 16px;
+    }
+}

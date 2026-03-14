@@ -1,0 +1,8 @@
+@use '../../styles' as *;
+
+:host {
+    @extend .container;
+    @extend .stack-y;
+    gap: 48px;
+    padding: 48px 24px 0 24px;
+}

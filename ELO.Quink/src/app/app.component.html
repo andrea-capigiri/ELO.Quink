@@ -1,0 +1,9 @@
+<!-- <app-header></app-header> -->
+<router-outlet></router-outlet>
+<app-footer></app-footer> 
+
+@if (router.url === '/') {
+    <button pButton [text]="true" [rounded]="true" class="menu-btn" (click)="router.navigate(['/settings'])">
+        <i class="material-icons">settings</i>
+    </button>
+}

@@ -1,0 +1,8 @@
+@if (!_service.loading) {
+    @if (settings.showTop()) {
+        <app-bookmarks-top></app-bookmarks-top>
+    }
+    @if (settings.showList()) {
+        <app-bookmarks></app-bookmarks>
+    }
+}

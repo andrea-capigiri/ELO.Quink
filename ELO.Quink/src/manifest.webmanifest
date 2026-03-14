@@ -1,0 +1,38 @@
+{
+    "name": "ELO.Quink",
+    "short_name": "ELO.Quink",
+    "description": "Developer tools for everyday use",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0969da",
+    "icons": [
+        {
+            "src": "assets/logos/favicon.ico",
+            "sizes": "16x16 32x32",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "assets/logos/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/logos/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/logos/icon-192-maskable.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "assets/logos/icon-512-maskable.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
