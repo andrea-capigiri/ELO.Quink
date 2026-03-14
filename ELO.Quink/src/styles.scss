@@ -9,8 +9,12 @@
 /* GitHub Design System - CSS Custom Properties */
 
 :root {
-    --md-card-bg: #3c3c3c;
-    --gh-canvas-default: #ffffff;
+    --md-card-bg: #ffffff;
+    --md-shadow: 0 12px 18px -2px rgba(0, 0, 0, 0.06);
+    --item-hover-bg: rgba(0, 0, 0, 0.05);
+    --folder-exploded-bg: rgba(0, 0, 0, 0.03);
+    --md-row-color: #484848;
+    --gh-canvas-default: #f3f3f3;
     --gh-canvas-subtle: #f6f8fa;
     --gh-canvas-inset: #f6f8fa;
     --gh-border-default: #d0d7de;
@@ -42,6 +46,11 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
+        --md-card-bg: #35363a;
+        --md-shadow: 0 4px 10px -2px rgba(255, 255, 255, 0.02);
+        --item-hover-bg: rgba(255, 255, 255, 0.08);
+        --folder-exploded-bg: rgba(0, 0, 0, 0.2);
+        --md-row-color: #D2D2D2;
         --gh-canvas-default: #282828;
         --gh-canvas-subtle: #161b22;
         --gh-canvas-inset: #010409;
@@ -114,54 +123,18 @@ label {
     }
 }
 
-/* TEMA CHIARO */
-@media (prefers-color-scheme: light) {
-    body {
-        // background-color: #F1F3F4;
-    }
-
-    main {
-        color: #737373;
-    }
-
-    .md {
-        background-color: #FFFFFF;
-        box-shadow: 0 12px 18px -2px rgba(0, 0, 0, 0.02);
-    }
-
-    a,
-    .md .md-row {
-        color: #484848;
-    }
-
-    .md .md-folder-exploded {
-        background-color: rgba(0, 0, 0, 0.2);
-    }
+.md {
+    background-color: var(--md-card-bg);
+    box-shadow: var(--md-shadow);
 }
 
-/* TEMA SCURO */
-@media (prefers-color-scheme: dark) {
-    body {
-        // background-color: #202124;
-    }
+a,
+.md .md-row {
+    color: var(--md-row-color);
+}
 
-    main {
-        color: #929292;
-    }
-
-    .md {
-        background-color: #35363a;
-        box-shadow: 0 4px 10px -2px rgba(255, 255, 255, 0.02);
-    }
-
-    a,
-    .md .md-row {
-        color: #D2D2D2;
-    }
-
-    .md .md-folder-exploded {
-        background-color: rgba(0, 0, 0, 0.2);
-    }
+.md .md-folder-exploded {
+    background-color: var(--folder-exploded-bg);
 }
 
 p-card,

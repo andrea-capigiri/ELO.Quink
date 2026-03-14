@@ -41,7 +41,7 @@
 
         //&:hover,
         //&:focus {
-        //    background: rgba(255, 255, 255, .08);
+        //    background: var(--item-hover-bg);
         //}
     }
 
@@ -105,7 +105,7 @@
     .md-table .md-item-title .small {
         font-size: .8em;
         margin-top: 2px;
-        color: #a2a2a2;
+        color: var(--gh-fg-muted);
     }
 
     .md.md-panel {
@@ -140,8 +140,8 @@
         align-items: center;
         text-align: center;
         padding: 2rem 1rem;
-        color: #888;
-        border: 2px dashed #666;
+        color: var(--gh-fg-muted);
+        border: 2px dashed var(--gh-border-default);
         border-radius: 12px;
 
         i.material-icons {
