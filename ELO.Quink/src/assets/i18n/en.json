@@ -1,0 +1,41 @@
+{
+    "bookmarks": {
+        "empty": {
+            "title": "Your Bookmarks bar is empty",
+            "description": "Save your favorite pages to the Bookmarks bar to see them here",
+            "ignore": "Ignore"
+        }
+    },
+    "quickLinks": {
+        "empty": {
+            "title": "No quick links yet",
+            "description": "Save pages to \"Other bookmarks\" to pin them here as quick links",
+            "ignore": "Ignore"
+        },
+        "showMore": "Show more",
+        "showLess": "Show less"
+    },
+    "settings": {
+        "title": "Settings",
+        "layout": "Layout",
+        "showTop": "Quick links (top)",
+        "showList": "Bookmarks list",
+        "language": "Language",
+        "english": "English",
+        "italian": "Italian",
+        "contributors": "Contributors",
+        "contributeMessage": "Using ELO.Quink every day and wondering how you ever survived without it? Then you already know its value. Join the community and help make it even better: a new tool, a bug fix, a wild idea at 11pm — every contribution counts. Check out the project on GitHub and leave your mark.",
+        "donateTitle": "Support the project",
+        "donateMessage": "ELO.Quink is free, open source, and built with passion and industrial amounts of coffee. If it has ever saved you from one of those terrible days, consider giving something back. It does not take much: even the price of a single espresso helps keep the project alive and up to date.",
+        "githubStar": "Star on GitHub",
+        "buyMeCoffee": "Buy me a coffee"
+    },
+    "footer": {
+        "privacyPolicy": "Privacy Policy",
+        "donate": "Donate"
+    },
+    "menu": {
+        "editBookmarks": "Edit bookmarks",
+        "settings": "Settings"
+    }
+}

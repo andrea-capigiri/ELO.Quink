@@ -1,35 +1,35 @@
 @if (!this._service.topBookmarks || this._service.topBookmarks.length === 0) {
     @if (!this.emptyDismissed) {
         <div class="empty-state">
-            <mat-icon>star_border</mat-icon>
-            <p>No quick links yet</p>
-            <span>Save pages to "Other bookmarks" to pin them here as quick links</span>
-            <p-button label="Ignore" [text]="true" severity="secondary" class="dismiss-button" (onClick)="this.dismissEmpty()" />
+            <i class="material-icons">star_border</i>
+            <p>{{ 'quickLinks.empty.title' | translate }}</p>
+            <span>{{ 'quickLinks.empty.description' | translate }}</span>
+            <p-button [label]="'quickLinks.empty.ignore' | translate" [text]="true" severity="secondary" class="dismiss-button" (onClick)="this.dismissEmpty()" />
         </div>
     }
 }
 @else {
     <div class="grid">
         @for ($item of this.visibleBookmarks; track $item.id) {
-            <div matRipple [matTooltip]="$item.title ?? ''" class="md button" (click)="this.navigateTo($item.url)">
+            <div [pTooltip]="$item.title ?? ''" tooltipPosition="bottom" class="md button" (click)="this._service.navigateTo($item.url)">
                 @if ($item.iconSrc) {
                     <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = $item.iconSrcFallback; $item.iconSrcFallback = null">
                 } @else {
-                    <mat-icon class="fallback-icon">star_border</mat-icon>
+                    <i class="material-icons fallback-icon">star_border</i>
                 }
                 <label>{{ $item.title }}</label>
             </div>
         }
         @if (this.hasOverflow) {
-            <div matRipple class="md button more-button" (click)="this.showAll = true">
-                <mat-icon>more_horiz</mat-icon>
-                <label>Show more</label>
+            <div class="md button more-button" (click)="this.showAll = true">
+                <i class="material-icons">more_horiz</i>
+                <label>{{ 'quickLinks.showMore' | translate }}</label>
             </div>
         }
         @if (this.showAll) {
-            <div matRipple class="md button more-button" (click)="this.showAll = false">
-                <mat-icon>expand_less</mat-icon>
-                <label>Show less</label>
+            <div class="md button more-button" (click)="this.showAll = false">
+                <i class="material-icons">expand_less</i>
+                <label>{{ 'quickLinks.showLess' | translate }}</label>
             </div>
         }
     </div>

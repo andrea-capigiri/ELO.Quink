@@ -1,21 +1,25 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonModule } from 'primeng/button';
 import { environment } from '../../environments/environment';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { SettingsComponent } from '../settings/settings.component';
+import { SettingsService } from '../_shared/settings.service';
 
 @Component({
     selector: 'app-footer',
     standalone: true,
     imports: [
-        MatIconModule,
-        MatButtonModule,
-        SettingsComponent
+        CommonModule,
+        TranslateModule,
+        ButtonModule
     ],
     templateUrl: './footer.component.html',
     styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
     public env: any = environment;
-    public year: number = new Date().getFullYear();
+
+    constructor(
+        public settings: SettingsService
+    ) { }
 }

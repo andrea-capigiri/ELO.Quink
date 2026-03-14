@@ -1,41 +1,76 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
+// Imports
+@import './assets/scss/scrollbar.scss';
+@import './assets/scss/utilities.scss';
+@import './assets/scss/ngprime-override.scss';
 // Fonts (local)
 @import 'material-icons/iconfont/filled.css';
+@import 'primeicons/primeicons.css';
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.elevation-classes();
-@include mat.app-background();
+/* GitHub Design System - CSS Custom Properties */
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$elo-quink-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
-$elo-quink-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
+:root {
+    --md-card-bg: #3c3c3c;
+    --gh-canvas-default: #ffffff;
+    --gh-canvas-subtle: #f6f8fa;
+    --gh-canvas-inset: #f6f8fa;
+    --gh-border-default: #d0d7de;
+    --gh-border-muted: #d8dee4;
+    --gh-fg-default: #1f2328;
+    --gh-fg-muted: #656d76;
+    --gh-fg-subtle: #6e7781;
+    --gh-accent-fg: #0969da;
+    --gh-accent-emphasis: #0969da;
+    --gh-accent-subtle: rgba(84, 174, 255, 0.15);
+    --gh-success-fg: #1a7f37;
+    --gh-success-emphasis: #1f883d;
+    --gh-danger-fg: #cf222e;
+    --gh-danger-bg: #ffebe9;
+    --gh-danger-border: #ff8182;
+    --gh-btn-text: #24292f;
+    --gh-btn-bg: #f6f8fa;
+    --gh-btn-border: rgba(31, 35, 40, 0.15);
+    --gh-btn-hover-bg: #f3f4f6;
+    --gh-btn-primary-text: #ffffff;
+    --gh-btn-primary-bg: #1f883d;
+    --gh-btn-primary-hover-bg: #1c7c38;
+    --gh-shadow-small: 0 1px 0 rgba(31, 35, 40, 0.04);
+    --gh-shadow-medium: 0 3px 6px rgba(140, 149, 159, 0.15);
+    --gh-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    --gh-font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --gh-radius: 6px;
+}
 
-// The warn palette is optional (defaults to red).
-$elo-quink-warn: mat.m2-define-palette(mat.$m2-red-palette);
+@media (prefers-color-scheme: dark) {
+    :root {
+        --gh-canvas-default: #282828;
+        --gh-canvas-subtle: #161b22;
+        --gh-canvas-inset: #010409;
+        --gh-border-default: #30363d;
+        --gh-border-muted: #21262d;
+        --gh-fg-default: #e6edf3;
+        --gh-fg-muted: #8b949e;
+        --gh-fg-subtle: #6e7681;
+        --gh-accent-fg: #58a6ff;
+        --gh-accent-emphasis: #1f6feb;
+        --gh-accent-subtle: rgba(56, 139, 253, 0.1);
+        --gh-success-fg: #3fb950;
+        --gh-success-emphasis: #238636;
+        --gh-danger-fg: #f85149;
+        --gh-danger-bg: rgba(218, 54, 51, 0.15);
+        --gh-danger-border: #da3633;
+        --gh-btn-text: #c9d1d9;
+        --gh-btn-bg: #21262d;
+        --gh-btn-border: rgba(240, 246, 252, 0.1);
+        --gh-btn-hover-bg: #30363d;
+        --gh-btn-primary-text: #ffffff;
+        --gh-btn-primary-bg: #238636;
+        --gh-btn-primary-hover-bg: #2ea043;
+        --gh-shadow-small: 0 0 transparent;
+        --gh-shadow-medium: 0 3px 6px #010409;
+    }
+}
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$elo-quink-theme: mat.m2-define-light-theme((color: (primary: $elo-quink-primary,
-                accent: $elo-quink-accent,
-                warn: $elo-quink-warn,
-            ),
-            typography: mat.m2-define-typography-config(),
-            density: 0));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($elo-quink-theme);
-
-/* You can add global styles to this file, and also import other style files */
+/* ========== BASE ========== */
 
 * {
     box-sizing: border-box;
@@ -43,9 +78,14 @@ $elo-quink-theme: mat.m2-define-light-theme((color: (primary: $elo-quink-primary
 }
 
 body {
+    //font-family: 'Segoe UI', 'Segoe UI Semibold', sans-serif;
+    //font-weight: 600;
     margin: 0;
-    font-family: 'Segoe UI', 'Segoe UI Semibold', sans-serif;
-    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: var(--gh-font);
+    color: var(--gh-fg-default);
+    background-color: var(--gh-canvas-default);
 }
 
 html,
@@ -54,25 +94,10 @@ app-root {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
 }
 
-
-.toolbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-
-    h1 {
-        margin: 0;
-        flex-grow: 1;
-    }
-
-    button {
-        zoom: .8;
-    }
+router-outlet+* {
+    flex: 1 !important;
 }
 
 label {
@@ -82,9 +107,6 @@ label {
     text-decoration: none;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical; */
 
     &.opacity {
         opacity: 0.5;
@@ -95,7 +117,7 @@ label {
 /* TEMA CHIARO */
 @media (prefers-color-scheme: light) {
     body {
-        background-color: #F1F3F4;
+        // background-color: #F1F3F4;
     }
 
     main {
@@ -120,7 +142,7 @@ label {
 /* TEMA SCURO */
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #202124;
+        // background-color: #202124;
     }
 
     main {
@@ -142,20 +164,23 @@ label {
     }
 }
 
-/* SCROLLBAR */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+p-card,
+.md.button,
+.bookmark-bar {
+    background-color: var(--md-card-bg) !important;
 }
 
-::-webkit-scrollbar-track {
-    background: #00000011;
+/* ========== TOOL CONTAINER ========== */
+
+.container-p tool-container {
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #ffffffaf;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #ffffffea;
+@media (max-width: 480px) {
+    .container-p tool-container {
+        padding: 16px;
+    }
 }

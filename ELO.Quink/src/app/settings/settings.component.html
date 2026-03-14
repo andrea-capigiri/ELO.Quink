@@ -1,25 +1,47 @@
-@if (open) {
-    <div class="overlay" (click)="close()"></div>
-    <div class="panel">
-        <div class="panel-header">
-            <mat-icon>settings</mat-icon>
-            <span>Impostazioni</span>
-            <button mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
-        </div>
-        <div class="panel-body">
-            <p class="section-title">Layout</p>
-            <div class="row">
-                <label>Quick links (in alto)</label>
-                <mat-slide-toggle [checked]="settings.showTop()" (change)="settings.setShowTop($event.checked)"></mat-slide-toggle>
+<div class="page-header">
+    <p-button [text]="true" [rounded]="true" (onClick)="router.navigate(['/'])">
+        <i class="material-icons">arrow_back</i>
+    </p-button>
+    <span class="page-title">{{ 'settings.title' | translate }}</span>
+</div>
+
+<p-card>
+    <p-floatlabel variant="on">
+        <p-select [options]="languages" [(ngModel)]="currentLanguage" optionLabel="label" optionValue="value" (onChange)="onLanguageChange($event.value)" styleClass="w-full" inputId="langSelect"></p-select>
+        <label for="langSelect">{{'settings.language' | translate}}</label>
+    </p-floatlabel>
+</p-card>
+
+<p-card [header]="'settings.layout' | translate">
+    <div class="toggle-row">
+        <span class="toggle-label">{{ 'settings.showTop' | translate }}</span>
+        <p-toggleswitch [ngModel]="settings.showTop()" (onChange)="settings.setShowTop($event.checked)"></p-toggleswitch>
+    </div>
+    <div class="toggle-row">
+        <span class="toggle-label">{{ 'settings.showList' | translate }}</span>
+        <p-toggleswitch [ngModel]="settings.showList()" (onChange)="settings.setShowList($event.checked)"></p-toggleswitch>
+    </div>
+</p-card>
+
+<p-card>
+    <div class="m-2">
+        <h3 class="text-center">{{ this.manifest.short_name }}</h3>
+        <p class="text-center">&copy; {{ this.year }} - v{{ this.manifest.version }}</p>
+        
+        <div class="my-3">
+            <h4>{{'settings.contributors' | translate}}</h4>
+            <p>{{'settings.contributeMessage' | translate}}</p>
+            <div class="center-center my-4">
+                <p-button icon="pi pi-github" [label]="'settings.githubStar' | translate" (onClick)="openGithub()"></p-button>
             </div>
-            <div class="row">
-                <label>Elenco segnalibri</label>
-                <mat-slide-toggle [checked]="settings.showList()" (change)="settings.setShowList($event.checked)"></mat-slide-toggle>
+        </div>
+
+        <div class="my-3">
+            <h4>{{'settings.donateTitle' | translate}}</h4>
+            <p>{{'settings.donateMessage' | translate}}</p>
+            <div class="center-center my-4">
+                <p-button icon="pi pi-heart" severity="warn" [label]="'settings.buyMeCoffee' | translate" (onClick)="openDonate()"></p-button>
             </div>
         </div>
     </div>
-}
-
-<button mat-icon-button (click)="toggle()" class="gear-btn">
-    <mat-icon>settings</mat-icon>
-</button>
+</p-card>

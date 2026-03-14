@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from "../../environments/environment";
-import { BookmarkItem } from "../app.component";
+import { BookmarkItem } from './application.models';
 import { mockBookmarks } from "./bookmarks.test";
 
 @Injectable()
@@ -8,6 +8,7 @@ export class ApplicationService {
 
     public topBookmarks: BookmarkItem[] = [];
     public bookmarks: BookmarkItem[] = [];
+    public loading = true;
 
     constructor() {
         this._getBookmarks()
@@ -15,6 +16,9 @@ export class ApplicationService {
                 let rootNode = res[0]?.children;
                 this.topBookmarks = (!!rootNode) ? this._mapData(rootNode[1], true)?.children?.filter(t => t.type == 'bookmark') : [];
                 this.bookmarks = (!!rootNode) ? this._mapData(rootNode[0])?.children : [];
+            })
+            .finally(() => {
+                this.loading = false;
             });
     }
 
@@ -37,6 +41,13 @@ export class ApplicationService {
         } catch {
             return null;
         }
+    }
+
+    public navigateTo(url: string | null) {
+        if (!url) return;
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.update(<any>tabs[0].id, { url: url });
+        });
     }
 
     private _mapData(item: any, isTop = false): BookmarkItem {

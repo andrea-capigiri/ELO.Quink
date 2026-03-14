@@ -1,10 +1,10 @@
 @if (!this._service.bookmarks || this._service.bookmarks.length === 0) {
   @if (!this.emptyDismissed) {
     <div class="empty-state">
-      <mat-icon>bookmark_border</mat-icon>
-      <p>Your Bookmarks bar is empty</p>
-      <span>Save your favorite pages to the Bookmarks bar to see them here</span>
-      <p-button label="Ignore" [text]="true" severity="secondary" class="dismiss-button" (onClick)="this.dismissEmpty()" />
+      <i class="material-icons">bookmark_border</i>
+      <p>{{ 'bookmarks.empty.title' | translate }}</p>
+      <span>{{ 'bookmarks.empty.description' | translate }}</span>
+      <p-button [label]="'bookmarks.empty.ignore' | translate" [text]="true" severity="secondary" class="dismiss-button" (onClick)="this.dismissEmpty()" />
     </div>
   }
 }
@@ -15,53 +15,38 @@
     @for ($item of list; track $item) {
       @if ($item.type=='folder') {
         <div class="md-table">
-          <div matRipple class="md-row md-folder" (click)="$item.expanded=!$item.expanded">
+          <div class="md-row md-folder" (click)="$item.expanded=!$item.expanded">
             <div class="md-item-expand">
-              @if ($item.expanded==false) {
-                <button mat-icon-button>
-                  <mat-icon>add</mat-icon>
-                </button>
-              }
-              @if ($item.expanded==true) {
-                <button mat-icon-button>
-                  <mat-icon>remove</mat-icon>
-                </button>
-              }
+              <button class="icon-btn">
+                <i class="material-icons">{{ $item.expanded ? 'remove' : 'add' }}</i>
+              </button>
             </div>
             <div class="md-item-title">{{ $item.title }}</div>
           </div>
           @if ($item.expanded==true && !!$item.children && $item.children.length>0) {
             <div class="md-folder-exploded">
-              <!-- <pre>{{$item | json}}</pre> -->
               <ng-container *ngTemplateOutlet="Recursion; context: { list: $item.children }"></ng-container>
             </div>
           }
         </div>
       }
       @if ($item.type=='bookmark') {
-        <div matRipple class="md-table" (click)="this.navigateTo($item.url)">
+        <div class="md-table" (click)="this._service.navigateTo($item.url)">
           <div class="md-row">
             <div class="md-item-icon">
               @if ($item.iconSrc) {
                 <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = null">
               } @else {
-                <mat-icon class="fallback-icon">star_border</mat-icon>
+                <i class="material-icons fallback-icon">star_border</i>
               }
             </div>
             <div class="md-item-title">
               {{$item.title}}
-              <!-- <label class="opacity">{{$item.url}}</label> -->
             </div>
           </div>
         </div>
       }
     }
   </ng-template>
-</div>
-
-<div class="toolbar">
-  <button mat-icon-button (click)="this.editBookmarks()">
-    <mat-icon>edit</mat-icon>
-  </button>
 </div>
 }

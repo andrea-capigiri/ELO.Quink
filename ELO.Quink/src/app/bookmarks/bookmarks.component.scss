@@ -1,5 +1,6 @@
 :host {
     flex-grow: 1;
+    position: relative;
 
     .md {
         display: grid;
@@ -106,10 +107,18 @@
         font-weight: bold;
     }
 
-    .toolbar {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        color: #525357;
+    .icon-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: inherit;
+        opacity: 0.7;
+        width: 48px;
+        height: 48px;
     }
 
     .empty-state {
@@ -122,10 +131,8 @@
         border: 2px dashed #666;
         border-radius: 12px;
 
-        mat-icon {
+        i.material-icons {
             font-size: 48px;
-            width: 48px;
-            height: 48px;
             opacity: 0.5;
         }
 

@@ -1,10 +1,10 @@
 <div class="footer-container">
-    <!-- &copy; {{ this.year }} • <a href="{{ environment.applicationWebsite }}" target="_blank">{{ environment.applicationName }}</a> 
-    • By <a href="https://andreacapigiri.com?ref=Quink" target="_blank">andreacapigiri.com</a>
-    <span class="spacer"></span>
-    <a href="{{ environment.applicationRepository }}" target="_blank">
-    -->
-</div>
-<div class="fixed-right">
-    <app-settings></app-settings>
+    <div>
+        <a [href]="env.authorWebsite" target="_blank">{{ env.authorName }}</a>
+    </div>
+    <div>
+        <a [href]="env.links.github" target="_blank">GitHub</a> •
+        <a [href]="env.links.privacyPolicy" target="_blank">{{ 'footer.privacyPolicy' | translate }}</a> •
+        <a [href]="env.links.donate" target="_blank">{{ 'footer.donate' | translate }}</a>
+    </div>
 </div>

@@ -1,34 +1,25 @@
+@use '../../styles' as *;
+
 :host {
     .footer-container {
         text-align: center;
-        padding: 12px 8px;
+        padding: 14px;
+        color: var(--gh-fg-muted);
+        font-size: 13px;
+        text-decoration: none;
 
         a {
             font-size: 0.75rem;
-            color: #888;
+            padding: 0 4px;
+            color: #b3b3b3;
             text-decoration: none;
-            opacity: 0.6;
+            opacity: 0.4;
             transition: opacity 0.2s;
 
             &:hover {
                 opacity: 1;
+                text-decoration: underline;
             }
         }
-    }
-
-    .fixed-left {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-    }
-
-    .fixed-right {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-    }
-
-    button {
-        zoom: .8;
     }
 }

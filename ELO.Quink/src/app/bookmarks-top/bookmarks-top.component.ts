@@ -1,20 +1,18 @@
 
 import { Component, inject } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
-import { MatIconModule } from '@angular/material/icon';
+import { TooltipModule } from 'primeng/tooltip';
 import { environment } from '../../environments/environment';
 import { ApplicationService } from '../_shared/application.service';
-import { MatRippleModule } from '@angular/material/core';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
     selector: 'app-bookmarks-top',
     standalone: true,
     imports: [
-        MatRippleModule,
-        MatTooltipModule,
-        MatIconModule,
+        TranslateModule,
+        TooltipModule,
         ButtonModule
     ],
     templateUrl: './bookmarks-top.component.html',
@@ -65,14 +63,4 @@ export class BookmarksTopComponent {
         localStorage.setItem('bookmarks-top-empty-dismissed', 'true');
     }
 
-    public editBookmarks(id: number | null = null) {
-        this.navigateTo(environment.favoriteEditorPath + (!!id ? '?id=2' : ''));
-    }
-
-    public navigateTo(url: string | null) {
-        if (!url) return;
-        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-            chrome.tabs.update(<any>tabs[0].id, { url: url });
-        });
-    }
 }

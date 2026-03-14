@@ -1,42 +1,19 @@
-
 import { Component, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { BookmarksTopComponent } from './bookmarks-top/bookmarks-top.component';
-import { BookmarksComponent } from './bookmarks/bookmarks.component';
+import { Router, RouterOutlet } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 import { FooterComponent } from './footer/footer.component';
-import { ApplicationService } from './_shared/application.service';
-import { SettingsService } from './_shared/settings.service';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     imports: [
-        BookmarksComponent,
-        BookmarksTopComponent,
-        FooterComponent,
-        MatIconModule,
-        MatButtonModule
+        RouterOutlet,
+        ButtonModule,
+        FooterComponent
     ],
     templateUrl: 'app.component.html',
     styleUrls: ['./app.component.scss'],
-    animations: []
 })
 export class AppComponent {
-    public _service = inject(ApplicationService);
-    public settings = inject(SettingsService);
-}
-
-export class BookmarkItem {
-    public type: 'folder' | 'bookmark' = 'folder';
-    public expanded: boolean = false;
-    public dateAdded: Date | null = null;
-    public id: string | null = null;
-    public index: number | null = null;
-    public parentId: string | null = null;
-    public title: string | null = null;
-    public iconSrc: string | null = null;
-    public iconSrcFallback: string | null = null;
-    public url: string | null = null;
-    public children: BookmarkItem[] = [];
+    public router = inject(Router);
 }
