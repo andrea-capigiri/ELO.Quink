@@ -1,10 +1,10 @@
 // Imports
-@import './assets/scss/scrollbar.scss';
-@import './assets/scss/utilities.scss';
-@import './assets/scss/ngprime-override.scss';
+@use './assets/scss/scrollbar.scss';
+@use './assets/scss/utilities.scss';
+@use './assets/scss/ngprime-override.scss';
 // Fonts (local)
-@import 'material-icons/iconfont/filled.css';
-@import 'primeicons/primeicons.css';
+@use 'material-icons/iconfont/filled.css';
+@use 'primeicons/primeicons.css';
 
 /* GitHub Design System - CSS Custom Properties */
 
@@ -135,7 +135,7 @@ label {
     }
 
     .md .md-folder-exploded {
-        background-color: rgba(0, 0, 0, .02);
+        background-color: rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -160,7 +160,7 @@ label {
     }
 
     .md .md-folder-exploded {
-        background-color: rgba(0, 0, 0, .02);
+        background-color: rgba(0, 0, 0, 0.2);
     }
 }
 

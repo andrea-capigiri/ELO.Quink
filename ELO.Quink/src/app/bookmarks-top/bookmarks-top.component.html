@@ -10,7 +10,7 @@
 }
 @else {
     <div class="grid">
-        @for ($item of this.visibleBookmarks; track $item.id) {
+        @for ($item of alwaysVisibleItems; track $item.id) {
             <div [pTooltip]="$item.title ?? ''" tooltipPosition="bottom" class="md button" (click)="this._service.navigateTo($item.url)">
                 @if ($item.iconSrc) {
                     <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = $item.iconSrcFallback; $item.iconSrcFallback = null">
@@ -20,17 +20,30 @@
                 <label>{{ $item.title }}</label>
             </div>
         }
-        @if (this.hasOverflow) {
-            <div class="md button more-button" (click)="this.showAll = true">
-                <i class="material-icons">more_horiz</i>
-                <label>{{ 'quickLinks.showMore' | translate }}</label>
-            </div>
-        }
-        @if (this.showAll) {
-            <div class="md button more-button" (click)="this.showAll = false">
-                <i class="material-icons">expand_less</i>
-                <label>{{ 'quickLinks.showLess' | translate }}</label>
-            </div>
-        }
     </div>
+    @if (hasAnyOverflow && !showAll) {
+        <div class="md button more-button show-more-btn" (click)="showAll = true">
+            <i class="material-icons">expand_more</i>
+        </div>
+    }
+    @if (hasAnyOverflow) {
+        <div class="overflow-section" [class.expanded]="showAll">
+            <div class="grid">
+                @for ($item of overflowItems; track $item.id) {
+                    <div [pTooltip]="$item.title ?? ''" tooltipPosition="bottom" class="md button" (click)="this._service.navigateTo($item.url)">
+                        @if ($item.iconSrc) {
+                            <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = $item.iconSrcFallback; $item.iconSrcFallback = null">
+                        } @else {
+                            <i class="material-icons fallback-icon">star_border</i>
+                        }
+                        <label>{{ $item.title }}</label>
+                    </div>
+                }
+                <div class="md button more-button" (click)="showAll = false">
+                    <i class="material-icons">remove</i>
+                    <label>{{ 'quickLinks.showLess' | translate }}</label>
+                </div>
+            </div>
+        </div>
+    }
 }

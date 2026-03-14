@@ -1,3 +1,5 @@
+@use '../../styles' as *;
+
 :host {
     flex-grow: 1;
     position: relative;
@@ -18,18 +20,29 @@
     }
 
     .md-folder-exploded {
-        padding-left: 12px;
         display: grid;
-        grid-template-columns: auto;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition: grid-template-rows 75ms ease, opacity 75ms ease;
+
+        &.expanded {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+    }
+
+    .md-folder-exploded-inner {
+        overflow: hidden;
     }
 
     .md-table {
         cursor: pointer !important;
-        transition: all .2s ease-in-out;
-    }
+        transition: all 20ms ease-in-out;
 
-    .md-table:focus {
-        background: rgba(255, 255, 255, .08);
+        //&:hover,
+        //&:focus {
+        //    background: rgba(255, 255, 255, .08);
+        //}
     }
 
     .md-table .md-row {

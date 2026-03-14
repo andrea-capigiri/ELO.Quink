@@ -8,7 +8,6 @@ import { FloatLabel } from 'primeng/floatlabel';
 import { SelectModule } from 'primeng/select';
 import { ToggleSwitch } from 'primeng/toggleswitch';
 import manifest from '../../manifest.json';
-import { FooterComponent } from '../footer/footer.component';
 import { SettingsService } from '../_shared/settings.service';
 
 type Language = 'en' | 'it';
@@ -20,7 +19,6 @@ type Language = 'en' | 'it';
         FloatLabel,
         FormsModule,
         TranslateModule,
-        FooterComponent,
         Card,
         ButtonModule,
         ToggleSwitch,

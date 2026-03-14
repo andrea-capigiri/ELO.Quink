@@ -34,4 +34,11 @@ export class BookmarksComponent {
     public editBookmarks(id: number | null = null) {
         this._service.navigateTo(environment.favoriteEditorPath + (!!id ? '?id=2' : ''));
     }
+
+    public calculatePadding(level: number) {
+        let base = 8;
+        let padding = 12;
+        if (level == 0) return base;
+        return (base + (level * padding));
+    }
 }

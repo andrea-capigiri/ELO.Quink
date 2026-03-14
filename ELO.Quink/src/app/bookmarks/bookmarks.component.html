@@ -1,52 +1,62 @@
 @if (!this._service.bookmarks || this._service.bookmarks.length === 0) {
-  @if (!this.emptyDismissed) {
-    <div class="empty-state">
-      <i class="material-icons">bookmark_border</i>
-      <p>{{ 'bookmarks.empty.title' | translate }}</p>
-      <span>{{ 'bookmarks.empty.description' | translate }}</span>
-      <p-button [label]="'bookmarks.empty.ignore' | translate" [text]="true" severity="secondary" class="dismiss-button" (onClick)="this.dismissEmpty()" />
-    </div>
-  }
+    @if (!this.emptyDismissed) {
+        <div class="empty-state">
+            <i class="material-icons">bookmark_border</i>
+            <p>{{ 'bookmarks.empty.title' | translate }}</p>
+            <span>{{ 'bookmarks.empty.description' | translate }}</span>
+            <p-button [label]="'bookmarks.empty.ignore' | translate" [text]="true" severity="secondary" class="dismiss-button" (onClick)="this.dismissEmpty()" />
+        </div>
+    }
 }
 @else {
-<div class="md bookmark-bar">
-  <ng-container *ngTemplateOutlet="Recursion; context: { list: this._service.bookmarks }"></ng-container>
-  <ng-template #Recursion let-list="list">
-    @for ($item of list; track $item) {
-      @if ($item.type=='folder') {
-        <div class="md-table">
-          <div class="md-row md-folder" (click)="$item.expanded=!$item.expanded">
-            <div class="md-item-expand">
-              <button class="icon-btn">
-                <i class="material-icons">{{ $item.expanded ? 'remove' : 'add' }}</i>
-              </button>
-            </div>
-            <div class="md-item-title">{{ $item.title }}</div>
-          </div>
-          @if ($item.expanded==true && !!$item.children && $item.children.length>0) {
-            <div class="md-folder-exploded">
-              <ng-container *ngTemplateOutlet="Recursion; context: { list: $item.children }"></ng-container>
-            </div>
-          }
-        </div>
-      }
-      @if ($item.type=='bookmark') {
-        <div class="md-table" (click)="this._service.navigateTo($item.url)">
-          <div class="md-row">
-            <div class="md-item-icon">
-              @if ($item.iconSrc) {
-                <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = null">
-              } @else {
-                <i class="material-icons fallback-icon">star_border</i>
-              }
-            </div>
-            <div class="md-item-title">
-              {{$item.title}}
-            </div>
-          </div>
-        </div>
-      }
-    }
-  </ng-template>
-</div>
+    <div class="md bookmark-bar">
+        <ng-container *ngTemplateOutlet="Recursion; context: { list: this._service.bookmarks, level: 0 }"></ng-container>
+        <ng-template #Recursion let-list="list" let-level="level">
+            @for ($item of list; track $item) {
+                @if ($item.type=='folder') {
+                    <div class="md-table">
+                        <div class="md-row md-folder"
+                            [style.padding-left.px]="calculatePadding(level)"
+                            (click)="$item.expanded=!$item.expanded">
+
+                            <div class="md-item-expand">
+                                <button class="icon-btn">
+                                    <i class="material-icons">{{ $item.expanded ? 'remove' : 'add' }}</i>
+                                </button>
+                            </div>
+                            <div class="md-item-title">{{ $item.title }}</div>
+                        </div>
+                    </div>
+                    @if (!!$item.children && $item.children.length>0) {
+                        <div class="md-folder-exploded" [class.expanded]="$item.expanded">
+                            <div class="md-folder-exploded-inner">
+                                <ng-container *ngTemplateOutlet="Recursion; context: { list: $item.children, level: level + 1 }"></ng-container>
+                            </div>
+                        </div>
+                    }
+                }
+                @if ($item.type=='bookmark') {
+                    <div class="md-table"
+                        (click)="this._service.navigateTo($item.url)">
+
+                        <div class="md-row"
+                            [style.padding-left.px]="calculatePadding(level)">
+                            
+                            <div class="md-item-icon">
+                                @if ($item.iconSrc) {
+                                    <img [src]="$item.iconSrc" [alt]="$item.title" (error)="$item.iconSrc = null">
+                                }
+                                @else {
+                                    <i class="material-icons fallback-icon">star_border</i>
+                                }
+                            </div>
+                            <div class="md-item-title">
+                                {{$item.title}}
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </ng-template>
+    </div>
 }

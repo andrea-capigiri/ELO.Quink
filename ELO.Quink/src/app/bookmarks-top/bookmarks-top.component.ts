@@ -1,11 +1,9 @@
-
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
-import { environment } from '../../environments/environment';
 import { ApplicationService } from '../_shared/application.service';
-import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
     selector: 'app-bookmarks-top',
@@ -47,20 +45,24 @@ export class BookmarksTopComponent {
         return this.columns * 2;
     }
 
-    get visibleBookmarks(): any[] {
-        const all = this._service.topBookmarks ?? [];
-        if (this.showAll) return all;
-        if (all.length <= this.maxItems) return all;
-        return all.slice(0, this.maxItems - 1);
+    get hasAnyOverflow(): boolean {
+        return (this._service.topBookmarks?.length ?? 0) > this.maxItems;
     }
 
-    get hasOverflow(): boolean {
-        return !this.showAll && (this._service.topBookmarks?.length ?? 0) > this.maxItems;
+    get alwaysVisibleItems(): any[] {
+        const all = this._service.topBookmarks ?? [];
+        if (!this.hasAnyOverflow) return all;
+        return all.slice(0, this.maxItems);
+    }
+
+    get overflowItems(): any[] {
+        const all = this._service.topBookmarks ?? [];
+        if (!this.hasAnyOverflow) return [];
+        return all.slice(this.maxItems);
     }
 
     public dismissEmpty() {
         this.emptyDismissed = true;
         localStorage.setItem('bookmarks-top-empty-dismissed', 'true');
     }
-
 }
