@@ -9,11 +9,15 @@ export class ApplicationService {
     public topBookmarks: BookmarkItem[] = [];
     public bookmarks: BookmarkItem[] = [];
     public loading = true;
+    public bookmarksBarId: string | null = null;
+    public otherBookmarksId: string | null = null;
 
     constructor() {
         this._getBookmarks()
             .then(res => {
                 let rootNode = res[0]?.children;
+                this.bookmarksBarId = rootNode?.[0]?.id ?? null;
+                this.otherBookmarksId = rootNode?.[1]?.id ?? null;
                 this.topBookmarks = (!!rootNode) ? this._mapData(rootNode[1], true)?.children?.filter(t => t.type == 'bookmark') : [];
                 this.bookmarks = (!!rootNode) ? this._mapData(rootNode[0])?.children : [];
             })
@@ -40,6 +44,15 @@ export class ApplicationService {
             return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
         } catch {
             return null;
+        }
+    }
+
+    public openUrl(url: string): void {
+        console.log(`Opening URL: ${url}`);
+        if (typeof chrome !== 'undefined' && chrome.tabs?.create) {
+            chrome.tabs.create({ url });
+        } else {
+            window.open(url, '_blank');
         }
     }
 

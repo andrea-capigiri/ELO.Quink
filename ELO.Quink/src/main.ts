@@ -13,14 +13,24 @@ import { ApplicationService } from './app/_shared/application.service';
 
 const LANGUAGE_KEY = 'elo-quink-language';
 
+const SUPPORTED_LANGUAGES = ['en', 'it', 'zh', 'hi', 'es', 'ar'] as const;
+const RTL_LANGUAGES = new Set(['ar']);
+
 function getSavedLanguage(): string {
     try {
         const stored = localStorage.getItem(LANGUAGE_KEY);
-        return stored === 'en' || stored === 'it' ? stored : 'it';
+        return SUPPORTED_LANGUAGES.includes(stored as any) ? stored! : 'en';
     } catch {
-        return 'it';
+        return 'en';
     }
 }
+
+function applyTextDirection(lang: string): void {
+    document.documentElement.dir = RTL_LANGUAGES.has(lang) ? 'rtl' : 'ltr';
+}
+
+const initialLang = getSavedLanguage();
+applyTextDirection(initialLang);
 
 bootstrapApplication(AppComponent, {
     providers: [
@@ -29,7 +39,7 @@ bootstrapApplication(AppComponent, {
         provideAnimationsAsync(),
         provideHttpClient(),
         provideTranslateService({
-            lang: getSavedLanguage(),
+            lang: initialLang,
             fallbackLang: 'en'
         }),
         provideTranslateHttpLoader({

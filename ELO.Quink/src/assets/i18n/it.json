@@ -18,17 +18,19 @@
     "settings": {
         "title": "Impostazioni",
         "layout": "Layout",
-        "showTop": "Link rapidi (in alto)",
-        "showList": "Lista segnalibri",
+        "showTop": "Mostra Quick Links",
+        "showList": "Mostra lista segnalibri",
         "language": "Lingua",
-        "english": "Inglese",
-        "italian": "Italiano",
         "contributors": "Collaboratori",
         "contributeMessage": "Usi ELO.Quink ogni giorno e ti chiedi come hai fatto a sopravvivere senza? Allora ne conosci già il valore. Unisciti alla community e aiuta a renderlo ancora migliore: un nuovo strumento, una correzione, un'idea folle alle 23 — ogni contributo conta. Dai un'occhiata al progetto su GitHub e lascia il tuo segno.",
         "donateTitle": "Sostieni il progetto",
         "donateMessage": "ELO.Quink è gratuito, open source, e costruito con passione e quantità industriali di caffè. Se ti ha mai salvato da una di quelle giornate no, considera di ricambiare il favore. Non ci vuole molto: anche il prezzo di un singolo espresso aiuta a tenere il progetto vivo e aggiornato.",
         "githubStar": "Metti una stella su GitHub",
-        "buyMeCoffee": "Offrimi un caffè"
+        "buyMeCoffee": "Offrimi un caffè",
+        "quickLinksTitle": "Quick Links",
+        "editQuickLinks": "Modifica Quick Links",
+        "bookmarksTitle": "Lista segnalibri",
+        "editBookmarks": "Modifica lista segnalibri"
     },
     "footer": {
         "privacyPolicy": "Privacy Policy",

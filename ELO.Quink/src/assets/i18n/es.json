@@ -1,0 +1,43 @@
+{
+    "bookmarks": {
+        "empty": {
+            "title": "La barra de marcadores está vacía",
+            "description": "Guarda tus páginas favoritas en la barra de marcadores para verlas aquí",
+            "ignore": "Ignorar"
+        }
+    },
+    "quickLinks": {
+        "empty": {
+            "title": "Sin enlaces rápidos",
+            "description": "Guarda páginas en \"Otros marcadores\" para añadirlos como enlaces rápidos",
+            "ignore": "Ignorar"
+        },
+        "showMore": "Mostrar más",
+        "showLess": "Mostrar menos"
+    },
+    "settings": {
+        "title": "Configuración",
+        "layout": "Diseño",
+        "showTop": "Mostrar enlaces rápidos",
+        "showList": "Mostrar lista de marcadores",
+        "language": "Idioma",
+        "contributors": "Colaboradores",
+        "contributeMessage": "¿Usas ELO.Quink todos los días y te preguntas cómo sobreviviste sin él? Entonces ya conoces su valor. Únete a la comunidad y ayuda a hacerlo aún mejor: una nueva herramienta, una corrección, una idea loca a las 11 de la noche — cada contribución cuenta. Echa un vistazo al proyecto en GitHub y deja tu huella.",
+        "donateTitle": "Apoya el proyecto",
+        "donateMessage": "ELO.Quink es gratuito, de código abierto y construido con pasión y cantidades industriales de café. Si alguna vez te salvó de uno de esos días terribles, considera devolver el favor. No hace falta mucho: incluso el precio de un solo espresso ayuda a mantener el proyecto vivo y actualizado.",
+        "githubStar": "Dale una estrella en GitHub",
+        "buyMeCoffee": "Invítame a un café",
+        "quickLinksTitle": "Enlaces rápidos",
+        "editQuickLinks": "Editar enlaces rápidos",
+        "bookmarksTitle": "Lista de marcadores",
+        "editBookmarks": "Editar lista de marcadores"
+    },
+    "footer": {
+        "privacyPolicy": "Política de privacidad",
+        "donate": "Donar"
+    },
+    "menu": {
+        "editBookmarks": "Editar marcadores",
+        "settings": "Configuración"
+    }
+}

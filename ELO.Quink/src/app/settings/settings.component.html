@@ -12,14 +12,25 @@
     </p-floatlabel>
 </p-card>
 
-<p-card [header]="'settings.layout' | translate">
+<p-card [header]="'settings.quickLinksTitle' | translate">
     <div class="toggle-row">
         <span class="toggle-label">{{ 'settings.showTop' | translate }}</span>
         <p-toggleswitch [ngModel]="settings.showTop()" (onChange)="settings.setShowTop($event.checked)"></p-toggleswitch>
     </div>
     <div class="toggle-row">
+        <span class="toggle-label">{{ 'settings.editQuickLinks' | translate }}</span>
+        <p-button icon="pi pi-pencil" [text]="true" (onClick)="openQuickLinksEditor()"></p-button>
+    </div>
+</p-card>
+
+<p-card [header]="'settings.bookmarksTitle' | translate">
+    <div class="toggle-row">
         <span class="toggle-label">{{ 'settings.showList' | translate }}</span>
         <p-toggleswitch [ngModel]="settings.showList()" (onChange)="settings.setShowList($event.checked)"></p-toggleswitch>
+    </div>
+    <div class="toggle-row">
+        <span class="toggle-label">{{ 'settings.editBookmarks' | translate }}</span>
+        <p-button icon="pi pi-pencil" [text]="true" (onClick)="openBookmarksEditor()"></p-button>
     </div>
 </p-card>
 

@@ -18,17 +18,19 @@
     "settings": {
         "title": "Settings",
         "layout": "Layout",
-        "showTop": "Quick links (top)",
-        "showList": "Bookmarks list",
+        "showTop": "Show Quick Links",
+        "showList": "Show bookmarks list",
         "language": "Language",
-        "english": "English",
-        "italian": "Italian",
         "contributors": "Contributors",
         "contributeMessage": "Using ELO.Quink every day and wondering how you ever survived without it? Then you already know its value. Join the community and help make it even better: a new tool, a bug fix, a wild idea at 11pm — every contribution counts. Check out the project on GitHub and leave your mark.",
         "donateTitle": "Support the project",
         "donateMessage": "ELO.Quink is free, open source, and built with passion and industrial amounts of coffee. If it has ever saved you from one of those terrible days, consider giving something back. It does not take much: even the price of a single espresso helps keep the project alive and up to date.",
         "githubStar": "Star on GitHub",
-        "buyMeCoffee": "Buy me a coffee"
+        "buyMeCoffee": "Buy me a coffee",
+        "quickLinksTitle": "Quick Links",
+        "editQuickLinks": "Edit Quick Links",
+        "bookmarksTitle": "Bookmarks list",
+        "editBookmarks": "Edit bookmarks list"
     },
     "footer": {
         "privacyPolicy": "Privacy Policy",

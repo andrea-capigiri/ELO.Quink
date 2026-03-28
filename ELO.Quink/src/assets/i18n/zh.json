@@ -1,0 +1,43 @@
+{
+    "bookmarks": {
+        "empty": {
+            "title": "书签栏为空",
+            "description": "将您喜欢的页面保存到书签栏以在此处查看",
+            "ignore": "忽略"
+        }
+    },
+    "quickLinks": {
+        "empty": {
+            "title": "暂无快速链接",
+            "description": "将页面保存到\"其他书签\"以将其添加为快速链接",
+            "ignore": "忽略"
+        },
+        "showMore": "显示更多",
+        "showLess": "显示更少"
+    },
+    "settings": {
+        "title": "设置",
+        "layout": "布局",
+        "showTop": "显示快速链接",
+        "showList": "显示书签列表",
+        "language": "语言",
+        "contributors": "贡献者",
+        "contributeMessage": "每天使用 ELO.Quink 并想知道没有它您是如何生存的？那么您已经了解它的价值。加入社区，帮助让它变得更好：一个新工具、一个错误修复、一个疯狂的想法——每一份贡献都很重要。在 GitHub 上查看该项目并留下您的印记。",
+        "donateTitle": "支持项目",
+        "donateMessage": "ELO.Quink 是免费的、开源的，由热情和大量咖啡构建。如果它曾经在糟糕的一天救了您，请考虑回报。不需要太多：即使是一杯咖啡的价格也有助于保持项目的活力和更新。",
+        "githubStar": "在 GitHub 上加星",
+        "buyMeCoffee": "请我喝杯咖啡",
+        "quickLinksTitle": "快速链接",
+        "editQuickLinks": "编辑快速链接",
+        "bookmarksTitle": "书签列表",
+        "editBookmarks": "编辑书签列表"
+    },
+    "footer": {
+        "privacyPolicy": "隐私政策",
+        "donate": "捐赠"
+    },
+    "menu": {
+        "editBookmarks": "编辑书签",
+        "settings": "设置"
+    }
+}
