@@ -1,6 +1,6 @@
 import { provideZoneChangeDetection } from "@angular/core";
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withHashLocation } from '@angular/router';
 import { routes } from './app/app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient } from '@angular/common/http';
@@ -25,7 +25,7 @@ function getSavedLanguage(): string {
 bootstrapApplication(AppComponent, {
     providers: [
         provideZoneChangeDetection(),
-        provideRouter(routes),
+        provideRouter(routes, withHashLocation()),
         provideAnimationsAsync(),
         provideHttpClient(),
         provideTranslateService({
