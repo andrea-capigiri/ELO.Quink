@@ -1,13 +1,13 @@
 {
   "private": true,
   "name": "elo",
-  "version": "3.1.5",
+  "version": "3.2.1",
   "scripts": {
     "start": "ng serve --port=4222",
     "watch": "ng build --watch --configuration development",
     "watch-prod-chrome": "ng build --watch --configuration production-chrome",
-    "build-chrome": "ng build --configuration=production-chrome",
-    "build-edge": "ng build --configuration=production-edge"
+    "build-chrome": "ng build --configuration=production-chrome && node scripts/postbuild.js chrome",
+    "build-edge": "ng build --configuration=production-edge && node scripts/postbuild.js edge"
   },
   "dependencies": {
     "@angular/animations": "^21.2.1",
@@ -35,6 +35,7 @@
     "@angular/cli": "^21.2.1",
     "@angular/compiler-cli": "^21.2.1",
     "@types/chrome": "^0.0.261",
+    "adm-zip": "^0.5.16",
     "typescript": "~5.9.3"
   }
 }
